@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6f1">
+  <title>Vitta | Gestão veterinária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <a class="brand" href="#painel" aria-label="Vitta, página inicial">
+        <span class="brand-mark" aria-hidden="true">✚</span>
+        <span class="brand-name">vitta<small>gestão veterinária</small></span>
+      </a>
+      <div class="side-label">Clínica</div>
+      <nav class="nav" aria-label="Seções">
+        <button class="nav-button active" type="button" data-page="painel" aria-current="page"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/></svg>Painel</button>
+        <button class="nav-button" type="button" data-page="pacientes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 20c.4-3.4 2.4-5.2 6-5.2s5.6 1.8 6 5.2M16 5.2a3.5 3.5 0 0 1 0 6.7M17 15c2.4.4 3.7 2 4 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Pacientes</button>
+        <button class="nav-button" type="button" data-page="agenda"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M7.5 3v4M16.5 3v4M3.5 10h17M8 14h2m4 0h2m-8 3h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Agenda</button>
+      </nav>
+      <div class="side-spacer"></div>
+      <div class="clinic-card"><div class="clinic-card-top"><span class="dot"></span><span>Unidade em demonstração</span></div><div class="clinic-name">Clínica Vitta</div><div class="clinic-code">ATENDIMENTO MULTIESPÉCIE</div></div>
+      <p class="demo-note">Protótipo local. Não substitui prontuário clínico nem validação profissional.</p>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb"><span class="crumb-dot"></span><strong id="crumb-title">Painel</strong><span>/</span><span>Clínica Vitta</span></div>
+        <div class="top-actions"><span class="date-label" id="today-label"></span><div class="profile"><span class="avatar" aria-hidden="true">AM</span><span class="profile-name">Dra. Ana Martins</span></div></div>
+      </header>
+
+      <section class="page active" id="painel-page" aria-labelledby="page-title">
+        <div class="page-heading">
+          <div><div class="eyebrow">Visão geral da clínica</div><h1 id="page-title">Olá, Ana <span aria-hidden="true">👋</span></h1><p class="subheading">Acompanhe os atendimentos e os pacientes de hoje.</p></div>
+          <div class="heading-actions"><span class="status"><span class="dot"></span>CLÍNICA ABERTA</span><button class="button primary" type="button" data-open="appointment"><span aria-hidden="true">＋</span>Novo atendimento</button></div>
+        </div>
+        <div class="stats" aria-label="Resumo da clínica">
+          <article class="stat-card"><span class="stat-icon">◷</span><div><div class="stat-label">Atendimentos hoje</div><div class="stat-value" id="today-count">3</div><div class="stat-caption">na agenda da clínica</div></div></article>
+          <article class="stat-card"><span class="stat-icon peach">♡</span><div><div class="stat-label">Pacientes cadastrados</div><div class="stat-value" id="patient-count">4</div><div class="stat-caption">de diferentes espécies</div></div></article>
+          <article class="stat-card"><span class="stat-icon yellow">✚</span><div><div class="stat-label">Espécies atendidas</div><div class="stat-value">Diversas</div><div class="stat-caption">conforme estrutura e equipe</div></div></article>
+          <article class="stat-card"><span class="stat-icon blue">✓</span><div><div class="stat-label">Documentação</div><div class="stat-value" id="doc-count">1</div><div class="stat-caption">cadastro(s) para conferir</div></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="panel" aria-labelledby="today-title">
+            <div class="panel-head"><div><h2 class="panel-title" id="today-title">Agenda de hoje</h2><div class="panel-caption">Próximos atendimentos programados</div></div><button class="text-button" type="button" data-navigate="agenda">Ver agenda →</button></div>
+            <div class="appointment-list" id="today-appointments"></div>
+          </section>
+          <section class="panel" aria-labelledby="recent-title">
+            <div class="panel-head"><div><h2 class="panel-title" id="recent-title">Pacientes recentes</h2><div class="panel-caption">Cadastros da clínica</div></div><button class="text-button" type="button" data-navigate="pacientes">Ver todos →</button></div>
+            <div class="patient-preview" id="recent-patients"></div>
+          </section>
+        </div>
+        <aside class="notice" role="note"><span class="notice-icon" aria-hidden="true">ⓘ</span><span><strong>Atendimento responsável:</strong> espécies silvestres ou exóticas exigem avaliação de competência técnica, estrutura adequada e conferência da documentação/autorização aplicável. Em caso de dúvida, confirme as regras locais e encaminhe a um serviço habilitado.</span></aside>
+      </section>
+
+      <section class="page" id="pacientes-page" aria-labelledby="patients-title">
+        <div class="page-heading"><div><div class="eyebrow">Cadastro e acompanhamento</div><h1 id="patients-title">Pacientes</h1><p class="subheading">Animais, responsáveis e informações de atendimento.</p></div><button class="button primary" type="button" data-open="patient"><span aria-hidden="true">＋</span>Novo paciente</button></div>
+        <div class="section-toolbar">
+          <label class="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="patient-search" type="search" placeholder="Buscar por paciente, responsável ou espécie" aria-label="Buscar paciente"></label>
+          <button class="button" type="button" data-open="patient">Cadastrar paciente</button>
+        </div>
+        <section class="panel">
+          <div class="table-wrap"><table><thead><tr><th>Paciente</th><th>Espécie</th><th>Responsável</th><th>Contato</th><th>Documentação</th></tr></thead><tbody id="patients-table"></tbody></table></div>
+        </section>
+        <p class="footer-note">O cadastro não comprova a legalidade da posse nem a habilitação da clínica para determinada espécie. Confirme documentos e requisitos antes do atendimento, sem atrasar cuidados urgentes.</p>
+      </section>
+
+      <section class="page" id="agenda-page" aria-labelledby="agenda-title">
+        <div class="page-heading"><div><div class="eyebrow">Consultas e procedimentos</div><h1 id="agenda-title">Agenda</h1><p class="subheading">Organize os atendimentos da equipe veterinária.</p></div><button class="button primary" type="button" data-open="appointment"><span aria-hidden="true">＋</span>Novo atendimento</button></div>
+        <div class="agenda-toolbar"><div class="agenda-date" id="agenda-date"></div><button class="button" type="button" data-open="patient">Cadastrar paciente</button></div>
+        <section class="panel"><div class="appointment-list" id="all-appointments"></div></section>
+        <p class="footer-note">Em situações de urgência, priorize a triagem e os cuidados necessários; a agenda é apenas uma ferramenta administrativa.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="modal" id="patient-dialog" aria-labelledby="patient-dialog-title">
+    <div class="modal-head"><div><h2 id="patient-dialog-title">Cadastrar paciente</h2><p>Identifique o animal e seu responsável.</p></div><button class="close-button" type="button" data-close aria-label="Fechar">×</button></div>
+    <form class="modal-form" id="patient-form">
+      <div class="form-grid">
+        <div class="field"><label for="pet-name">Nome do animal</label><input id="pet-name" name="petName" required maxlength="60" autocomplete="off"></div>
+        <div class="field"><label for="species">Espécie / grupo</label><select id="species" name="species" required><option value="">Selecione</option><option>Cão</option><option>Gato</option><option>Ave doméstica</option><option>Pequeno mamífero</option><option>Réptil</option><option>Anfíbio</option><option>Peixe</option><option>Equino</option><option>Bovino</option><option>Outro animal de produção</option><option>Silvestre / exótico</option><option>Outra espécie permitida</option></select></div>
+        <div class="field full"><label for="species-name">Espécie específica (opcional)</label><input id="species-name" name="speciesName" maxlength="80" placeholder="Ex.: iguana-verde, arara-canindé, jabuti-piranga"><span class="field-hint">Informe o nome comum ou científico quando o grupo não for suficiente. Para silvestres e exóticos, identifique a espécie antes de avaliar o atendimento.</span></div>
+        <div class="field"><label for="guardian">Responsável legal</label><input id="guardian" name="guardian" required maxlength="80" autocomplete="name"></div>
+        <div class="field"><label for="phone">Telefone</label><input id="phone" name="phone" type="tel" required maxlength="25" autocomplete="tel"></div>
+        <div class="field full"><label for="documents">Documentação / autorização</label><select id="documents" name="documents"><option value="na">Não se aplica / a confirmar</option><option value="pending">Pendente de conferência</option><option value="verified">Conferida pela clínica</option></select><span class="field-hint">Para espécies sujeitas a controle, registre apenas após verificar documentos exigidos e capacidade de atendimento.</span></div>
+      </div>
+      <div class="modal-warning">Este protótipo não valida documentos, propriedade legal ou permissões de atendimento.</div>
+      <div class="form-actions"><button class="button" type="button" data-close>Cancelar</button><button class="button primary" type="submit">Salvar paciente</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="appointment-dialog" aria-labelledby="appointment-dialog-title">
+    <div class="modal-head"><div><h2 id="appointment-dialog-title">Novo atendimento</h2><p>Agende uma consulta ou procedimento.</p></div><button class="close-button" type="button" data-close aria-label="Fechar">×</button></div>
+    <form class="modal-form" id="appointment-form">
+      <div class="form-grid">
+        <div class="field full"><label for="appointment-patient">Paciente</label><select id="appointment-patient" name="patientId" required></select></div>
+        <div class="field"><label for="appointment-date">Data</label><input id="appointment-date" name="date" type="date" required></div>
+        <div class="field"><label for="appointment-time">Horário</label><input id="appointment-time" name="time" type="time" required></div>
+        <div class="field"><label for="appointment-type">Tipo</label><select id="appointment-type" name="type"><option>Consulta</option><option>Retorno</option><option>Vacinação</option><option>Procedimento</option><option>Triagem</option></select></div>
+        <div class="field"><label for="veterinarian">Profissional</label><input id="veterinarian" name="veterinarian" required maxlength="70" value="Dra. Ana Martins"></div>
+        <div class="field full"><label for="reason">Motivo / observações</label><textarea id="reason" name="reason" maxlength="240" placeholder="Descreva brevemente o motivo do atendimento"></textarea></div>
+      </div>
+      <div class="form-actions"><button class="button" type="button" data-close>Cancelar</button><button class="button primary" type="submit">Salvar atendimento</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
